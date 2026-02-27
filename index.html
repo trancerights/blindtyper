@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A focused writing environment for private, distraction-free writing sessions">
+  <meta name="author" content="Jovan Lukic">
+  <title>Blindtype - Private Writing Tool</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="src/css/colours.css">
+  <link rel="stylesheet" href="src/css/style.css">
+  <link rel="icon" href="src/img/icon.ico">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <div id="mainContent">
+    <div class="modal fade" id="introModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content help-modal">
+          <div class="modal-header">
+            <h5 class="modal-title">Blindtype</h5>
+          </div>
+          <div class="modal-body">
+            <p>A focused writing environment for private, distraction-free writing sessions.</p>
+            <ul>
+              <li><i class="fas fa-shield-alt" style="margin-right: 0.5rem;"></i> Your drafts are automatically saved in
+                your browser's <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage"
+                  target="_blank">local storage</a></li>
+              <li><i class="fas fa-lock" style="margin-right: 0.5rem;"></i> No data ever leaves your device</li>
+              <li><i class="fas fa-eye-slash" style="margin-right: 0.5rem;"></i> Click anywhere in the textarea to hide
+                your writing from shoulder surfers</li>
+              <li><i class="fas fa-file-download" style="margin-right: 0.5rem;"></i> Export your work as Markdown files
+              </li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" id="dismissIntroModal">
+              <i class="fas fa-pencil-alt" style="margin-right: 0.5rem;"></i>Start Writing
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button id="helpBtn" class="btn btn-sm btn-outline-secondary position-fixed bottom-0 end-0 m-3"
+      style="z-index: 1000;" title="Help & Info">
+      <i class="fas fa-question"></i>
+    </button>
+
+    <textarea id="textArea"
+      placeholder="Start writing here... Click anywhere to hide your text from prying eyes"></textarea>
+
+    <div class="action-bar">
+      <button type="button" class="btn btn-primary" id="saveButton">
+        <i class="fas fa-download"></i> Save as Markdown
+      </button>
+      <button type="button" id="restoreButton" class="btn btn-primary">
+        <i class="fas fa-undo"></i> Restore Draft
+      </button>
+    </div>
+
+    <div id="hidingObject">
+      <!-- onclick="event.stopPropagation()" -->
+
+      <i class="fas fa-eye-slash" style="font-size: 3rem; color: var(--text-muted);"></i>
+      <h2>Writing Hidden</h2>
+      <p>Click below to reveal your text</p>
+      <div class="action-bar">
+        <button class="btn btn-primary" id="showButton">
+          <i class="fas fa-eye"></i> Reveal Text
+        </button>
+        <button class="btn btn-primary" id="saveButtonOverlay">
+          <i class="fas fa-download"></i> Save as Markdown
+        </button>
+      </div>
+    </div>
+
+    <footer>
+      <div id="socialLinks">
+        <h5>Built with <i class="fas fa-heart" style="color: var(--primary);"></i> for focused writing</h5>
+        <div>
+          <a href="https://github.com/trancerights" target="_blank" title="GitHub">
+            <i class="fa-brands fa-github"></i>
+          </a>
+          <a href="mailto:work@asteriash.xyz" title="Email">
+            <i class="fa-solid fa-envelope"></i>
+          </a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="./src/time.js" type="module"></script>
+  <script src="./src/autosave.js" type="module"></script>
+  <script src="./src/index.js" type="module"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
